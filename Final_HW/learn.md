@@ -509,7 +509,7 @@ const std::vector<cv::Point3f> object_points{
 imagePoints:  左上 -> 右上 -> 右下 -> 左下
 objectPoints: 左上 -> 右上 -> 右下 -> 左下
 ```
-![装甲板坐标系](picture\armor.png)
+![装甲板坐标系](picture/armor.png)
 
 
 ### 4.3 角点、内参和畸变如何配合
@@ -630,7 +630,7 @@ command = Kp * error
 u(t) = Kp * e(t) + Ki * integral(e(t)) + Kd * de(t)/dt
 ```
 
-![pid](picture\pid.png)
+![pid](picture/pid.png)
 
 其中 `u(t)` 是控制器输出，`Kp`、`Ki`、`Kd` 分别是比例、积分、微分系数。这里的“测量量”必须来自真实传感器或视觉观测；若系统没有测量当前状态，仅有目标设定值，就无法根据实际误差实现反馈 PID。
 
@@ -666,7 +666,7 @@ u[k] = Kp * e[k]
      + Kd / dt * (e[k] - e[k-1])
 ```
 
-![位置式pid](picture\pid1.png)
+![位置式pid](picture/pid1.png)
 
 位置式PID是当前系统的实际位置，与你想要达到的预期位置的偏差，进行PID控制
 
@@ -684,7 +684,7 @@ delta_u[k] = Kp * (e[k] - e[k-1])
 u[k] = u[k-1] + delta_u[k]
 ```
 
-![增量式pid](picture\pid2.png)
+![增量式pid](picture/pid2.png)
 
 增量式PID根据公式可以很好地看出，一旦确定了 KP、TI  、TD，只要使用前后三次测量值的偏差， 即可由公式求出控制增量。而得出的控制量▲u(k)对应的是近几次位置误差的增量，而不是对应与实际位置的偏差没有误差累加。也就是说，增量式PID中不需要累加。控制增量Δu(k)的确定仅与最近3次的采样值有关，容易通过加权处理获得比较好的控制效果，并且在系统发生问题时，增量式不会严重影响系统的工作
 
@@ -720,7 +720,7 @@ u[k] = u[k-1] + delta_u[k]
 
 下图中左侧为算法组同学提出的要求，右侧为电控组交付的部分通信协议
 
-![通信协议](picture\info.png)
+![通信协议](picture/info.png)
 
 
 ### 6.2 显式序列化，不要直接发送任意结构体内存
@@ -747,7 +747,7 @@ u[k] = u[k-1] + delta_u[k]
 
 将电脑上的usb设备连接到虚拟机步骤如下图所示，在虚拟机的可移动设备选项中选择想要接入的设备然后选择连接即可
 
-![连接虚拟机](picture\virtue.png)
+![连接虚拟机](picture/virtue.png)
 
 云台控制器连接成功后，Linux 通常会为 USB 转串口设备创建类似 `/dev/ttyUSB0` 或 `/dev/ttyACM0` 的设备节点。先用 `ls /dev/ttyUSB* /dev/ttyACM* ` 查看实际名称。
 
